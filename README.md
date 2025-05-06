@@ -21,6 +21,8 @@ The module allows you to:
     - Configure the value (or part of a value) within the cookie that signifies consent.
     - Choose the logic for checking the cookie (existence, value contains, value does not contain).
 
+![Speedcurve Config Example](./docs/SpeedcurveConfig.png)
+
 ## Requirements
 
 - Magento 2 (e.g., 2.3.x, 2.4.x)
@@ -74,6 +76,6 @@ You can monitor your Speedcurve RUM dashboard to see data coming in, including t
 
 ## License
 
-[Please specify your desired license here, e.g., MIT License, OSL-3.0] 
+MIT License
 
-(If no license file exists, consider adding one, e.g., `LICENSE.txt`, and referencing it here). 
+See the [LICENSE](LICENSE) file for details. 
