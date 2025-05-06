@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Bluebirdday. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bluebirdday" translate="label" sortOrder="100">
+            <label>Bluebirdday</label>
+        </tab>
+        <section id="speedcurve" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Speedcurve</label>
+            <tab>bluebirdday</tab>
+            <resource>Bluebirdday_SpeedcurveMagento::config_speedcurve</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Speedcurve RUM</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable or disable the Speedcurve RUM script injection.</comment>
+                </field>
+                <field id="lux_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LUX ID</label>
+                    <validate>required-entry</validate>
+                    <comment>Enter your Speedcurve LUX ID.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <!-- New Cookie Consent Fields -->
+                <field id="enable_cookie_consent" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cookie Consent Check</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, Speedcurve will only load if consent is detected via the settings below.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="cookie_name" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Consent Cookie Name</label>
+                    <comment>The name of the cookie used for consent management (e.g., 'amcookie_allowed', 'CookieConsent').</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="enable_cookie_consent">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="cookie_value" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Consent Cookie Value (for 'contains' check)</label>
+                    <comment>The value (or part of the value) within the cookie that indicates consent for performance/tracking scripts (e.g., '-1', 'necessary:true', 'performance'). Leave empty if just checking for cookie existence.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="enable_cookie_consent">1</field>
+                    </depends>
+                </field>
+                <field id="consent_logic" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Consent Check Logic</label>
+                    <source_model>Bluebirdday\SpeedcurveMagento\Model\Config\Source\ConsentLogic</source_model>
+                    <comment>How to check the cookie value. 'Cookie Exists' ignores the value field. 'Value Contains' checks if the cookie value includes the specified text. 'Value Does Not Contain' checks the opposite.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="enable_cookie_consent">1</field>
+                    </depends>
+                </field>
+                <!-- End Cookie Consent Fields -->
+            </group>
+            <group id="page_labels" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Labels</label>
+                <depends>
+                    <field id="general/enabled">1</field>
+                </depends>
+                <field id="category_page" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Page Label</label>
+                    <comment>The label to send for category pages. Default: category-page</comment>
+                </field>
+                <field id="product_page" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Page Label</label>
+                    <comment>The label to send for product detail pages. Default: product-page</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config> 

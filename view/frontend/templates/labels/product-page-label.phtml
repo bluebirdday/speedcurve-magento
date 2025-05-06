@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © Bluebirdday. All rights reserved.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Bluebirdday\SpeedcurveMagento\Helper\Data $helper
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$helper = $this->helper(\Bluebirdday\SpeedcurveMagento\Helper\Data::class);
+$productPageLabel = $helper->getProductPageLabel();
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "bluebirddaySpeedcurvePageLabel": {
+                "pageLabel": "<?= $escaper->escapeJs($productPageLabel) ?>"
+            }
+        }
+    }
+</script> 

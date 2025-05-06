@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Bluebirdday. All rights reserved.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Bluebirdday\SpeedcurveMagento\Helper\Data $helper
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$helper = $this->helper(\Bluebirdday\SpeedcurveMagento\Helper\Data::class);
+$luxId = $helper->getLuxId();
+$isCookieConsentEnabled = $helper->isCookieConsentEnabled();
+$cookieName = $helper->getCookieName();
+$cookieValue = $helper->getCookieValue();
+$consentLogic = $helper->getConsentLogic();
+?>
+<?php if ($luxId): ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "bluebirddaySpeedcurveRum": {
+                "luxId": "<?= $escaper->escapeJs($luxId) ?>",
+                "cookieConsentEnabled": <?= /* @noEscape */ $isCookieConsentEnabled ? 'true' : 'false' ?>,
+                "cookieName": "<?= $escaper->escapeJs($cookieName) ?>",
+                "cookieValue": "<?= $escaper->escapeJs($cookieValue ?? '') ?>",
+                "consentLogic": "<?= $escaper->escapeJs($consentLogic) ?>",
+                "logicExists": "<?= $escaper->escapeJs(\Bluebirdday\SpeedcurveMagento\Model\Config\Source\ConsentLogic::LOGIC_EXISTS) ?>",
+                "logicContains": "<?= $escaper->escapeJs(\Bluebirdday\SpeedcurveMagento\Model\Config\Source\ConsentLogic::LOGIC_CONTAINS) ?>",
+                "logicNotContains": "<?= $escaper->escapeJs(\Bluebirdday\SpeedcurveMagento\Model\Config\Source\ConsentLogic::LOGIC_NOT_CONTAINS) ?>"
+            }
+        }
+    }
+</script>
+<?php endif; ?> 

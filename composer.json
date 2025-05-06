@@ -1,0 +1,54 @@
+{
+    "name": "bluebirdday/speedcurve-magento",
+    "description": "Integrates SpeedCurve RUM for Magento 2.",
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Bluebird Day",
+            "email": "support@bluebirdday.nl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Bluebirdday\\SpeedcurveMagento\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "magento/composer-dependency-version-audit-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "archive": {
+        "exclude": [
+            ".gitignore",
+            "phpstan.neon",
+            "phpunit.xml",
+            "Test"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2|^8.3",
+        "magento/framework": "*",
+        "magento/module-store": "*"
+    },
+    "require-dev": {
+        "dg/bypass-finals": "^1.9",
+        "phpunit/phpunit": "^12.1"
+    }
+}

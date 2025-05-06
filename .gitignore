@@ -1,0 +1,8 @@
+/.idea
+.phpunit.result.cache
+.phpunit.cache
+phpunit.xml
+phpstan.neon
+/reports
+/vendor
+/auth.json
