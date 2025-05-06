@@ -33,14 +33,17 @@ The module allows you to:
 Install the module via Composer:
 
 ```bash
-# Replace bluebirdday/module-speedcurve with the actual package name if different
 composer require bluebirdday/speedcurve-magento
 bin/magento module:enable Bluebirdday_SpeedcurveMagento
 bin/magento setup:upgrade
 bin/magento cache:flush
 ```
 
-*(Note: If installing on a production environment, you will likely need to run `setup:di:compile` and `setup:static-content:deploy <locales>` as per standard Magento deployment procedures).* 
+For production environments, run the following additional commands:
+```bash
+bin/magento setup:di:compile
+bin/magento setup:static-content:deploy <locales>
+```
 
 ## Configuration
 
